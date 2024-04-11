@@ -23,7 +23,7 @@ const channelSchema = mongoose.Schema({
     },
     streamKey:{
         type: String,
-        default: uuid()
+        default: uuid
     },
     messages:{
         type: [{ 

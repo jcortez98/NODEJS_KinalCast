@@ -35,8 +35,6 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   const { email, password } = req.body;
 
-  console.log(req)
-
   try {
     //verificar si el email existe:
     const user = await User.findOne({ email: email.toLowerCase() });
@@ -66,7 +64,6 @@ export const login = async (req, res) => {
     }
    
   } catch (e) {
-    console.log(e, 'd');
     res.status(500).send("Comuniquese con el administrador");
   }
 };
