@@ -2,11 +2,11 @@
   "name": "twitch.tv",
   "version": "1.0.0",
   "description": "Proyecto de desarrollo clon de Twitch",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "satrt": " node app.js",
-    "dev": "nodemon app.js"
+    "satrt": " node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "Twitch",
