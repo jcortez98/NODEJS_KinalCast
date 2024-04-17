@@ -14,9 +14,9 @@ export const getChannelDetails = async (req, res) => {
 
     const user = await User.findOne({ channel: channelId }, { username: 1 });
 
-    const streamUrl = `http://127.0.0.1:8000/live/${channel.streamKey}.flv`;
+    const streamUrl = `https://nms-kinal-cast-2024.vercel.app/live/${channel.streamKey}.flv`;
 
-    const requestData = await axios.get("http://127.0.0.1:8000/api/streams");
+    const requestData = await axios.get("https://nms-kinal-cast-2024.vercel.app/api/streams");
 
     const activeStreams = requestData.data;
 
@@ -42,10 +42,9 @@ export const getChannelDetails = async (req, res) => {
       streamUrl: streamUrl,
     });
   } catch (e) {
-    console.log(e);
-    return res
-      .status(500)
-      .send("Channel not found, please check yout channel url");
+      return res
+        .status(500)
+        .send("Channel not found, please check yout channel url");
   }
 };
 
@@ -59,7 +58,7 @@ export const getChannels = async (req, res) => {
       }
     ).populate("channel");
 
-    const requestData = await axios.get("http://127.0.0.1:8000/api/streams");
+    const requestData = await axios.get("https://nms-kinal-cast-2024.vercel.app/api/streams");
 
     const activeStreams = requestData.data;
 
@@ -90,7 +89,6 @@ export const getChannels = async (req, res) => {
       channels,
     });
   } catch (e) {
-    console.log(e);
     return res.status(500).send("Somthing went wrong");
   }
 };
@@ -112,7 +110,6 @@ export const postFollowChannel = async (req, res) => {
 
     return res.status(200).send("Channel followed successfully");
   } catch (e) {
-    console.log(e);
     return res.status(500).send("Somthing went wrong");
   }
 };
@@ -129,7 +126,6 @@ export const getFollowedChannels = async (req, res) => {
       followedChannels,
     });
   } catch (e) {
-    console.log(e);
     return res.status(500).send("Error occured wen fetichig channels");
   }
 };

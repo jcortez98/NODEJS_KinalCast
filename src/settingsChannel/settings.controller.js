@@ -20,7 +20,6 @@ export const getChannelSetting = async (req, res) => {
             streamKey: userData.channel.streamKey,
         })
     }catch(e){
-        console.log(e)
         return res.status(500).send('Something went wrong')
     }
 }
@@ -52,7 +51,6 @@ export const putChannelSettings = async(req, res) => {
         })
 
     }catch(e){
-        console.log(e)
         return res.status(500).send('Somthing went wrong')
     }
 }
@@ -76,7 +74,6 @@ export const patchChangePassword = async (req, res) => {
 
         return res.status(200).send('Password changed succesfully')
     }catch(e){
-        console.log(e)
         return res.status(500).send('Somthing went wrong')
     } 
 }
