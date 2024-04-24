@@ -1,8 +1,10 @@
 import { config } from "dotenv";
-config()
+config();
 
-import Server from "./configs/server.js";
+import ExpressServer from "./configs/server.js";
+import { registerSocketServer } from "./src/io/io.js";
 
-const server = new Server()
+const server = new ExpressServer();
+server.listen();
+registerSocketServer(server);
 
-server.listen()
