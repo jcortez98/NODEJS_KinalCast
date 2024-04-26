@@ -14,9 +14,13 @@ export const getChannelDetails = async (req, res) => {
 
     const user = await User.findOne({ channel: channelId }, { username: 1 });
 
-    const streamUrl = `https://nms-kinal-cast-2024.vercel.app/live/${channel.streamKey}.flv`;
+    //const streamUrl = `https://nms-kinal-cast-2024.vercel.app/live/${channel.streamKey}.flv`;
 
-    const requestData = await axios.get("https://nms-kinal-cast-2024.vercel.app/api/streams");
+    const streamUrl = `http://127.0.0.1:80/live/${channel.streamKey}.flv`;
+
+    //const requestData = await axios.get("https://nms-kinal-cast-2024.vercel.app/api/streams");
+
+    const requestData = await axios.get("http://127.0.0.1:80/api/streams");
 
     const activeStreams = requestData.data;
 
@@ -58,7 +62,9 @@ export const getChannels = async (req, res) => {
       }
     ).populate("channel");
 
-    const requestData = await axios.get("https://nms-kinal-cast-2024.vercel.app/api/streams");
+    //const requestData = await axios.get("https://nms-kinal-cast-2024.vercel.app/api/streams");
+
+    const requestData = await axios.get("http://127.0.0.1/api/streams");
 
     const activeStreams = requestData.data;
 

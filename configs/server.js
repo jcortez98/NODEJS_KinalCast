@@ -10,7 +10,9 @@ import authRoutes from '../src/auth/auth.routes.js';
 import channelRoutes from '../src/channel/channel.routes.js';
 import channelSettingsRoutes from '../src/settingsChannel/settings.routes.js';
 import { dbConnection } from './mongo.js';
-
+import User from '../src/users/user.model.js'
+import Channel from '../src/channel/channel.model.js'
+import Message from '../src/messages/message.model.js'
 class ExpressServer {
     constructor(){
         this.app = express();
