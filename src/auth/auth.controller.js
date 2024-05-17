@@ -44,6 +44,7 @@ export const login = async (req, res) => {
 
       res.status(200).json({
         msg: "Login Ok!!!",
+        ip: process.env.IP_1,
         userDetails: {
           username: user.username,
           token: token

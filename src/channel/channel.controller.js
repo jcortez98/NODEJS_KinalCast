@@ -2,7 +2,11 @@ import axios from "axios";
 import User from "../users/user.model.js";
 import Channel from "./channel.model.js";
 
+
+
 export const getChannelDetails = async (req, res) => {
+  const ip = process.env.IP_1;
+  
   try {
     const { channelId } = req.params;
 
@@ -16,11 +20,11 @@ export const getChannelDetails = async (req, res) => {
 
     //const streamUrl = `https://nms-kinal-cast-2024.vercel.app/live/${channel.streamKey}.flv`;
 
-    const streamUrl = `http://127.0.0.1:80/live/${channel.streamKey}.flv`;
+    const streamUrl = `http://${ip}:80/live/${channel.streamKey}.flv`;
 
     //const requestData = await axios.get("https://nms-kinal-cast-2024.vercel.app/api/streams");
 
-    const requestData = await axios.get("http://127.0.0.1:80/api/streams");
+    const requestData = await axios.get(`http://${ip}:80/api/streams`);
 
     const activeStreams = requestData.data;
 
@@ -52,7 +56,8 @@ export const getChannelDetails = async (req, res) => {
   }
 };
 
-export const getChannels = async (req, res) => {
+export const getChannels = async (_, res) => {
+  const ip = process.env.IP_1;
   try {
     const users = await User.find(
       {},
@@ -64,7 +69,7 @@ export const getChannels = async (req, res) => {
 
     //const requestData = await axios.get("https://nms-kinal-cast-2024.vercel.app/api/streams");
 
-    const requestData = await axios.get("http://127.0.0.1/api/streams");
+    const requestData = await axios.get(`http://${ip}:80/api/streams`);
 
     const activeStreams = requestData.data;
 
@@ -95,6 +100,7 @@ export const getChannels = async (req, res) => {
       channels,
     });
   } catch (e) {
+    console.log(e)
     return res.status(500).send("Somthing went wrong");
   }
 };

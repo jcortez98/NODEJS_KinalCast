@@ -1,7 +1,7 @@
 {
-  "name": "twitch.tv",
+  "name": "kinal.cast",
   "version": "1.0.0",
-  "description": "Proyecto de desarrollo clon de Twitch",
+  "description": "Backend, haciendo uso de express y nodeJs para KinalCast",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,11 +9,12 @@
     "dev": "nodemon index.js"
   },
   "keywords": [
-    "Twitch",
+    "express",
     "backend",
-    "nodeJs"
+    "nodeJs",
+    "kinalCast"
   ],
-  "author": "Braulio Echeverria",
+  "author": "Braulio Echeverria y Josue Noj",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.6.8",
@@ -30,6 +31,7 @@
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.4",
     "morgan": "^1.10.0",
+    "public-ip": "^6.0.2",
     "socket.io": "^4.7.5",
     "uuid": "^9.0.1",
     "vercel": "^34.0.0"
