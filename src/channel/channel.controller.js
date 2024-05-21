@@ -1,8 +1,11 @@
 import axios from "axios";
+import https from 'https'
 import User from "../users/user.model.js";
 import Channel from "./channel.model.js";
 
-
+const agent = new https.Agent({  
+  rejectUnauthorized: false
+});
 
 export const getChannelDetails = async (req, res) => {
   const ip = process.env.IP_1;
@@ -20,11 +23,11 @@ export const getChannelDetails = async (req, res) => {
 
     //const streamUrl = `https://nms-kinal-cast-2024.vercel.app/live/${channel.streamKey}.flv`;
 
-    const streamUrl = `http://${ip}:80/live/${channel.streamKey}.flv`;
+    const streamUrl = `https://${ip}:443/live/${channel.streamKey}.flv`;
 
     //const requestData = await axios.get("https://nms-kinal-cast-2024.vercel.app/api/streams");
 
-    const requestData = await axios.get(`http://${ip}:80/api/streams`);
+    const requestData = await axios.get(`https://${ip}:443/api/streams`, { httpsAgent: agent });
 
     const activeStreams = requestData.data;
 
@@ -69,7 +72,7 @@ export const getChannels = async (_, res) => {
 
     //const requestData = await axios.get("https://nms-kinal-cast-2024.vercel.app/api/streams");
 
-    const requestData = await axios.get(`http://${ip}:80/api/streams`);
+    const requestData = await axios.get(`https://${ip}:443/api/streams`, { httpsAgent: agent });
 
     const activeStreams = requestData.data;
 
